@@ -20,25 +20,27 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {},
   setup(_options, nuxt) {
-    const resolver = createResolver(import.meta.url);
+    const {resolve} = createResolver(import.meta.url);
+    const runtimeDir = resolve('./runtime')
+    nuxt.options.build.transpile.push(runtimeDir)
 
     // Style resources
     if (nuxt.options.dev) {
       // In development, use the SCSS file
-      nuxt.options.css.push(resolver.resolve("./runtime/assets/main.scss"));
+      nuxt.options.css.push(resolve(runtimeDir, 'main.scss'))
     } else {
       // In production, use the compiled CSS file
-      nuxt.options.css.push(resolver.resolve("./runtime/assets/main.css"));
+      nuxt.options.css.push(resolve(runtimeDir, 'main.css'))
     }
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
+    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`  
     addPlugin({
-      src: resolver.resolve("./runtime/plugins/icons"),
-      mode: "client",
-    });    
-    addPlugin({
-      src: resolver.resolve("./runtime/plugins/rivet-client"),
+      src: resolve(runtimeDir, 'plugins', 'icons'),
       mode: "client",
     });
+    addPlugin({
+      src: resolve(runtimeDir, 'plugins', 'rivet-client'),
+      mode: "client",
+    })
   },
 });
