@@ -6,4 +6,3 @@
     </Container>
   </div>
 </template>
-<script setup></script>

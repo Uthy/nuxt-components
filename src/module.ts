@@ -23,7 +23,13 @@ export default defineNuxtModule<ModuleOptions>({
     const resolver = createResolver(import.meta.url);
 
     // Style resources
-    nuxt.options.css.push(resolver.resolve("./runtime/assets/main.scss"));
+    if (nuxt.options.dev) {
+      // In development, use the SCSS file
+      nuxt.options.css.push(resolver.resolve("./runtime/assets/main.scss"));
+    } else {
+      // In production, use the compiled CSS file
+      nuxt.options.css.push(resolver.resolve("./runtime/assets/main.css"));
+    }
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin({
