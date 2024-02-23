@@ -124,24 +124,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    defaultTitle() {
-      const route = this.$route;
-      const title = () => {
-        const pathArray = route.path.split("/");
-        return pathArray.length > 1
-          ? pathArray[1].charAt(0).toUpperCase() +
-              pathArray[1].slice(1).replace(/-/g, " ")
-          : "";
-      };
-      return title();
-    },
-  },
-};
-</script>
-
 <script lang="ts" setup>
 interface NavItem {
   title: string;
@@ -160,6 +142,24 @@ const props = defineProps({
     default: () => [],
   },
 });
+</script>
+
+<script lang="ts">
+export default {
+  computed: {
+    defaultTitle() {
+      const route = this.$route;
+      const title = () => {
+        const pathArray = route.path.split("/");
+        return pathArray.length > 1
+          ? pathArray[1].charAt(0).toUpperCase() +
+              pathArray[1].slice(1).replace(/-/g, " ")
+          : "";
+      };
+      return title();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
