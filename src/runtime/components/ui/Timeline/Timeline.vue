@@ -25,12 +25,17 @@
 <script setup lang="ts">
 defineProps({
   timeline: {
-    type: Array as () => Array<{ dates: string; title: string, description: string }>,
+    type: Array as () => Array<{
+      dates: string;
+      title: string;
+      description: string;
+    }>,
     default: () => [
       {
         dates: "1990 - 2002",
         title: "The Early Years",
-        description: "NCRAD's roots trace back to its establishment as the Cell Bank Core, operating under the umbrella of the Indiana Alzheimer's Disease Center. During this period, our focus was on the recruitment of multiplex families for groundbreaking linkage studies. These foundational years set the stage for what NCRAD would become. ",
+        description:
+          "NCRAD's roots trace back to its establishment as the Cell Bank Core, operating under the umbrella of the Indiana Alzheimer's Disease Center. During this period, our focus was on the recruitment of multiplex families for groundbreaking linkage studies. These foundational years set the stage for what NCRAD would become. ",
       },
     ],
   },
