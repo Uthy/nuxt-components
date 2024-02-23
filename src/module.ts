@@ -25,13 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Style resources
-    if (nuxt.options.dev) {
-      // In development, use the SCSS file
-      nuxt.options.css.push(resolve(runtimeDir, 'main.scss'))
-    } else {
-      // In production, use the compiled CSS file
-      nuxt.options.css.push(resolve(runtimeDir, 'main.css'))
-    }
+    nuxt.options.css.push(resolve(runtimeDir, 'main.scss'))
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`  
     addPlugin({
