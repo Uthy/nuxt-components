@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   type: {
     type: String,
@@ -17,5 +17,3 @@ defineProps({
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

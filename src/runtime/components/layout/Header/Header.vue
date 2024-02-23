@@ -665,7 +665,7 @@ const props = defineProps({
 });
 </script>
 
-<script lang="ts">
+<script>
 export default {
   methods: {
     isActiveLink(link: string) {
